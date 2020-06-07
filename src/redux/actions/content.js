@@ -52,6 +52,6 @@ export const removeTrackToPlayer = () => ({
 });
 
 export const setPlayerHeight = (height) => ({
-  type: ContentConstants.SET_PLAYER_HEIGHT,
+  type: 'SET_PLAYER_HEIGHT',
   payload: height,
 });
