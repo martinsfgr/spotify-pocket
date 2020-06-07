@@ -13,21 +13,21 @@ const contentReducer = (state = contentInitialState, action) => {
   const { type, payload } = action;
 
   switch (type) {
-    case ContentConstants.ADD_PLAYER_TRACK:
+    case 'ADD_PLAYER_TRACK':
       return {
         ...state,
         playingNowId: payload.id,
         playingNowTrack: payload,
       };
 
-    case ContentConstants.GET_CATEGORIES_REQUEST:
+    case 'GET_CATEGORIES_REQUEST':
       return {
         ...state,
         categories: [],
         status: 'running',
       };
 
-    case ContentConstants.GET_CATEGORIES_SUCCESS:
+    case 'GET_CATEGORIES_SUCCESS':
       return {
         ...state,
         errorMessage: '',
@@ -35,7 +35,7 @@ const contentReducer = (state = contentInitialState, action) => {
         status: 'success',
       };
 
-    case ContentConstants.GET_CATEGORIES_FAILED:
+    case 'GET_CATEGORIES_FAILED':
       return {
         ...state,
         categories: [],
@@ -43,14 +43,14 @@ const contentReducer = (state = contentInitialState, action) => {
         status: 'error',
       };
 
-    case ContentConstants.GET_CATEGORY_PLAYLIST_REQUEST:
+    case 'GET_CATEGORY_PLAYLIST_REQUEST':
       return {
         ...state,
         playlists: [],
         status: 'running',
       };
 
-    case ContentConstants.GET_CATEGORY_PLAYLIST_SUCCESS:
+    case 'GET_CATEGORY_PLAYLIST_SUCCESS':
       return {
         ...state,
         errorMessage: '',
@@ -58,7 +58,7 @@ const contentReducer = (state = contentInitialState, action) => {
         status: 'success',
       };
 
-    case ContentConstants.GET_CATEGORY_PLAYLIST_FAILED:
+    case 'GET_CATEGORY_PLAYLIST_FAILED':
       return {
         ...state,
         errorMessage: payload.message,
@@ -66,14 +66,14 @@ const contentReducer = (state = contentInitialState, action) => {
         status: 'error',
       };
 
-    case ContentConstants.GET_PLAYLIST_TRACKS_REQUEST:
+    case 'GET_PLAYLIST_TRACKS_REQUEST':
       return {
         ...state,
         tracks: [],
         status: 'running',
       };
 
-    case ContentConstants.GET_PLAYLIST_TRACKS_SUCCESS:
+    case 'GET_PLAYLIST_TRACKS_SUCCESS':
       return {
         ...state,
         errorMessage: '',
@@ -81,7 +81,7 @@ const contentReducer = (state = contentInitialState, action) => {
         status: 'success',
       };
 
-    case ContentConstants.GET_PLAYLIST_TRACKS_FAILED:
+    case 'GET_PLAYLIST_TRACKS_FAILED':
       return {
         ...state,
         tracks: [],
@@ -89,7 +89,7 @@ const contentReducer = (state = contentInitialState, action) => {
         status: 'error',
       };
 
-    case ContentConstants.REMOVE_PLAYER_TRACK:
+    case 'REMOVE_PLAYER_TRACK':
       return {
         ...state,
         playingNowId: null,
@@ -97,7 +97,7 @@ const contentReducer = (state = contentInitialState, action) => {
         playerHeight: 0,
       };
 
-    case ContentConstants.SET_PLAYER_HEIGHT:
+    case 'SET_PLAYER_HEIGHT':
       return {
         ...state,
         playerHeight: payload,
