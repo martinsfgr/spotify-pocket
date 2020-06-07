@@ -9,7 +9,7 @@ const INITIAL_STATE = {
   errorMessage: '', 
 }
 
-const contentReducer = (state = contentInitialState, action) => {
+const contentReducer = (state = INITIAL_STATE, action) => {
   const { type, payload } = action;
 
   switch (type) {
