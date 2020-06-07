@@ -18,6 +18,13 @@ const Player = () => {
   const playerRef = useRef(null);
   const playerHeight = playerRef?.current?.offsetHeight || 0;
   const dispatch = useDispatch();
+
+  const handleTimeUpdate = () => {
+    const audioPlayer = audioElementRef.current;
+    const width = Math.floor((audioPlayer.currentTime / audioPlayer.duration) * 100) + '%';
+
+    setProgressBarWidth(width);
+  }
 }
 
 export default Player;
