@@ -14,6 +14,7 @@ const Player = () => {
   const [progressBarWidth, setProgressBarWidth] = useState('0%');
   const playingNowId = useSelector(state => state.content.playingNowId);
   const playingNowTrack = useSelector(state => state.content.playingNowTrack);
+  const prevPlayingNowId = usePrevious(playingNowId);
   const audioElementRef = useRef(null);
   const playerRef = useRef(null);
   const playerHeight = playerRef?.current?.offsetHeight || 0;
@@ -25,6 +26,42 @@ const Player = () => {
 
     setProgressBarWidth(width);
   }
+
+  const handleOnEnded = () => {
+    dispatch(removeTrackToPlayer());
+  }
+
+  useEffect(() => {
+    if (playingNowId === prevPlayingNowId) {
+      return;
+    }
+
+    setCurrentTrack(playingNowTrack);
+  }, [playingNowId, prevPlayingNowId, playingNowTrack]);
+
+  useEffect(() => {
+    const audioPlayer = audioElementRef.current;
+
+    if (prevPlayingNowId === playingNowId) {
+      if (isPlaying && audioPlayer?.paused) {
+        audioPlayer.play();
+      }
+
+      if (!isPlaying && !audioPlayer?.paused) {
+        audioPlayer.pause();
+      }
+    }
+    else {
+      setIsPlaying(true);
+    }
+  }, [isPlaying, playingNowId, prevPlayingNowId]);
+
+  useEffect(() => {
+    if (playerHeight > 0) {
+      dispatch(setPlayerHeight(playerHeight))
+    }
+  }, [isPlaying, dispatch, playerHeight])
+
 }
 
 export default Player;
