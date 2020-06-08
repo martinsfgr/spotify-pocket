@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { BsPlayFill, BsVolumeUpFill } from 'react-icons/bs';
 import Ink from 'react-ink';
 
-import { addTrackToPlayer, removeTrackToPlayer } from '../../actions';
+import { addTrackToPlayer, removeTrackToPlayer } from '../../redux/actions';
 
 import './Track.scss';
 
