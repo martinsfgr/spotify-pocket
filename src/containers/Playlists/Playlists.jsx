@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 
 import { Loading, RouteHeader } from '../../components';
 
+import PlaylistItem from './PlaylistItem';
+
 import './Playlists.scss';
 
 const Playlists = ({ data, categoryName, categoryId, isLoading, path }) => (
