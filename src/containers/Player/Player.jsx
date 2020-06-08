@@ -4,7 +4,7 @@ import { BsPauseFill, BsPlayFill } from 'react-icons/bs';
 import Ink from 'react-ink';
 
 import { setPlayerHeight, removeTrackToPlayer } from '../../redux/actions';
-import { } from '../../modules/custom-hooks';
+import { usePrevious } from '../../modules/custom-hooks';
 
 import './Player.scss';
 
@@ -19,6 +19,17 @@ const Player = () => {
   const playerRef = useRef(null);
   const playerHeight = playerRef?.current?.offsetHeight || 0;
   const dispatch = useDispatch();
+
+  const togglePlayPause = () => {
+    const audioPlayer = audioElementRef.current;
+
+    if (isPlaying && !audioPlayer.paused) {
+      setIsPlaying(false);
+    }
+    else if (!isPlaying && audioPlayer.paused) {
+      setIsPlaying(true);
+    }
+  }
 
   const handleTimeUpdate = () => {
     const audioPlayer = audioElementRef.current;
