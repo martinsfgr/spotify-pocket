@@ -6,21 +6,25 @@ import { Logo } from '../../components';
 
 import './Topbar.scss';
 
-const Topbar = () => (
-  <header className="topbar" data-testid="topbar">
-    <div className="container">
-      <Link to="/dashboard">
-        <Logo />
-      </Link>
+const Topbar = () => {
+  const user = useSelector(state => state.user);
 
-      <div className="user">
-        <span className="user__name">{user.name}</span>
-        <figure className="user__thumb">
-          <img src={user.thumb} alt={`foto de perfil de ${user.name}`} />
-        </figure>
+  return (
+    <header className="topbar" data-testid="topbar">
+      <div className="container">
+        <Link to="/dashboard">
+          <Logo />
+        </Link>
+
+        <div className="user">
+          <span className="user__name">{user.name}</span>
+          <figure className="user__thumb">
+            <img src={user.thumb} alt={`foto de perfil de ${user.name}`} />
+          </figure>
+        </div>
       </div>
-    </div>
-  </header>
-);
+    </header>
+  )
+}
 
 export default Topbar;
