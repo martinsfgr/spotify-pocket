@@ -6,23 +6,27 @@ import { Player } from '../';
 
 import './Dashboard.scss';
 
-const Dashboard = ({ children }) => (
-  <div 
+const Dashboard = ({ children }) => {
+  const playerHeight = useSelector(state => state.content.playerHeight);
+
+  return (
+    <div 
     className="dashboard"
     data-testid="dashboard"
     style={{paddingBottom: `${playerHeight}px`}}
-  >
-    {children}
+    >
+      {children}
 
-    <Player />
-  </div>
-);
+      <Player />
+    </div>
+  )
+}
 
 Dashboard.defaultProps = {
   children: [],
 }
 
-Dashboard.PropTypes = {
+Dashboard.propTypes = {
   children: PropTypes.node,
 }
 
