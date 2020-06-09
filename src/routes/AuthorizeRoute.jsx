@@ -27,7 +27,7 @@ const AuthorizateRoute = () => {
     }
 
     dispatch(authCallbackSuccess(hashData));
-  }, [urlHash]);
+  }, [urlHash, dispatch]);
 
   useEffect(() => {
     if (isLogged) {

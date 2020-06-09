@@ -25,10 +25,15 @@ import {
   Topbar,
 } from '../containers';
 
+import PlaylistsRoute from './PlaylistsRoute';
+import TracksRoute from './TracksRoute';
+
+import userReducer from '../redux/reducers/user';
+
 const { getCategories, getUserProfile,  } = endpoints;
 
 const DashboardRoute = () => {
-  const { auth, content } = useSelector(state => state);
+  const { auth, content, user } = useSelector(state => state);
   const { path, url } = useRouteMatch();
   const dispatch = useDispatch();
 
@@ -77,9 +82,29 @@ const DashboardRoute = () => {
   }, [auth, dispatch]);
 
   return (
-    <div>
-      Oi
-    </div>
+    <Dashboard>
+      <Topbar />
+
+      <Switch>
+        <PrivateRoute exact path={path}>
+          <WelcomeBox name={user.name} />
+
+          <Categories
+            isLoading={content.status === 'running' && content.categories.length === 0}
+            data={content.categories}
+            url={url}
+          />
+        </PrivateRoute>
+
+        <PrivateRoute exact path={`${path}/:categoryId`}>
+          <PlaylistsRoute path={path} />
+        </PrivateRoute>
+
+        <PrivateRoute exact path={`${path}/:categoryId/:playlistId`}>
+          <TracksRoute />
+        </PrivateRoute>
+      </Switch>
+    </Dashboard>
   )
 }
 
