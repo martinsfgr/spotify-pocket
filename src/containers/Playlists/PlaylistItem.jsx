@@ -4,7 +4,7 @@ import Ink from 'react-ink';
 import PropTypes from 'prop-types';
 
 const PlaylistItem = ({ categoryId, description, id, image, name, path }) => (
-  <div className="playlists_item" data-testid="playlists_item">
+  <div className="playlists_item" data-testid="playlist">
     <Link
       className="playlists__item__link"
       style={{backgroundImage: `url(${image.url})`}}

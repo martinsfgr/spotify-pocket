@@ -6,7 +6,7 @@ import PropTypes from 'prop-types';
 const CategoryItem = ({ id, icon, name, url }) => (
   <div 
     className="categories__item" 
-    datatestid="category" 
+    data-testid="category" 
     style={{backgroundImage: `url(${icon.url})`}}
   >
     <Link

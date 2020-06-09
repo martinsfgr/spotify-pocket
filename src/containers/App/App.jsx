@@ -9,7 +9,7 @@ import store from '../../redux/store'
 import './App.scss';
 
 const App = () => (
-  <div className="app">
+  <div className="app" data-testid="app">
     <Provider store={store}>
       <BrowserRouter>
         <Routes />
