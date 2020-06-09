@@ -16,11 +16,11 @@ export const getUserSuccess = (payload) => {
 };
 
 export const getUserFailed = ({ message }) => ({
-  type: UserConstants.GET_USER_FAILED,
+  type: 'GET_USER_FAILED',
   payload: { message },
 });
 
 export const logout = () => ({
-  type: UserConstants.USER_LOGOUT,
+  type: 'USER_LOGOUT',
   payload: {},
 });
