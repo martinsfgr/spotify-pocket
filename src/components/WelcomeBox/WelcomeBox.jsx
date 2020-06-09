@@ -6,7 +6,7 @@ import './WelcomeBox.scss';
 const WelcomeBox = ({ name }) => (
   <div className="welcome-box" data-testid="welcome-box">
     <div className="container">
-      <span>Bem vindo <strong>{name}</strong></span>
+      <span>Bem vindo, <strong>{name}</strong></span>
     </div>
   </div>
 );
